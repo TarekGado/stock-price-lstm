@@ -1,27 +1,32 @@
-# Stock Price Prediction (AAPL) — LSTM
+# Stock Price Prediction — LSTM
 
-This project predicts **next-day closing price** for **Apple (AAPL)** using an **LSTM** model with both **technical indicators** and **macroeconomic factors**.
+**Goal:** Predict **next-day closing price** for **AAPL** using an **LSTM** model with technical + macroeconomic features.
 
-> Single-script workflow: see `scripts/apple_stock_predection.py`.
+## 1) Data Sources
+- **Yahoo Finance**: AAPL, NASDAQ (^IXIC), VIX (^VIX)
+- **FRED**: GDP (`GDP`), CPI (`CPIAUCSL`), Unemployment (`UNRATE`), Fed Funds (`FEDFUNDS`)
 
----
+## 2) Tools & Libraries
+Python 3.13, `pandas`, `yfinance`, `pandas_datareader`,  
+`scikit-learn`, `tensorflow` (for LSTM), `matplotlib/plotly`, `streamlit`.
 
-## ✨ Highlights
+## 3) Features
+- **Technical**: EMA_20, RSI(14)  
+- **Macro**: GDP (quarterly→daily ffill), CPI + CPI_MoM + CPI_YoY (monthly→daily ffill),  
+  Unemployment, Fed Funds (monthly→daily ffill)  
+- **Market**: NASDAQ (^IXIC), VIX (^VIX)
 
-- **Data**: Yahoo Finance (AAPL, NASDAQ ^IXIC, VIX ^VIX) + FRED (GDP, CPI, Unemployment, Fed Funds).
-- **Features**:
-  - Technical: **EMA_20**, **RSI(14)** (computed in pure pandas).
-  - Macro: **GDP** (Q → daily ffill), **CPI** with **CPI_MoM** & **CPI_YoY** (M → daily ffill),
-    **Unemployment**, **Fed Funds** (M → daily ffill).
-  - Market: **NASDAQ** (^IXIC), **VIX** (^VIX).
-- **Leak-safe pipeline**:
-  1. Chronological split (default **70/15/15** train/val/test).
-  2. **Scale on train only**, apply to val/test.
-  3. **Window per split** (no leakage): 60-day lookback → 1-day ahead target.
-- **Metrics**: MAE, RMSE, MAPE (printed and can be saved to `reports/metrics/`).
-- **Figures**: Predicted vs. True charts saved under `reports/figures/`.
+## 4) Model & Why
+- **LSTM**: captures non-linear patterns and uses multiple exogenous inputs.
+- Trained on rolling 70%/15%/15% split (train/validation/test).
+- Safe scaling (fit on train, apply to val/test).
+- Windowing: 60-day lookback → next-day target.
 
----
+## 5) Results (Test Set)
+- **LSTM**: MAE = **2.92**, RMSE = **3.92**, MAPE = **1.25%**
 
-## 📂 Repository Structure
+<p align="center">
+  <img src="reports/figures/aapl_test_pred_lstm.png" width="80%"/>
+</p>
 
+## 6) Repo Structure
