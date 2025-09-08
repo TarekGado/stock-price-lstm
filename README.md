@@ -26,7 +26,7 @@ Python 3.13, `pandas`, `yfinance`, `pandas_datareader`,
 - **LSTM**: MAE = **2.92**, RMSE = **3.92**, MAPE = **1.25%**
 
 <p align="center">
-  <img src="reports/figures/aapl_test_pred_lstm.png" width="80%"/>
+   ![Genre Trend](Streamlit.png)
 </p>
 
 ## 6) Repo Structure
