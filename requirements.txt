@@ -1,0 +1,18 @@
+# Core scientific stack
+numpy
+pandas
+
+# Data sources
+yfinance
+pandas_datareader
+
+# Machine learning
+scikit-learn
+tensorflow
+
+# Visualization
+matplotlib
+plotly
+
+# App (if you’re running Streamlit dashboard)
+streamlit
