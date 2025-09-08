@@ -28,9 +28,7 @@ Python 3.13, `pandas`, `yfinance`, `pandas_datareader`,
 ## Results
 
 ### Test predictions
-![Test Prediction](aapl_test_pred_lstm.png)
+![Test Prediction](reports/aapl_test_pred_lstm.png)
 
 ### Validation predictions
-![Validation Prediction](aapl_val_pred_lstm.png)
-
-## 6) Repo Structure
+![Validation Prediction](reports/aapl_val_pred_lstm.png)
